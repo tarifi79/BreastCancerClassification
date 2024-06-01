@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler, LabelEncoder
-from sklearn.model_selection import train_test_split
+import joblib
 
 def preprocess_breast_cancer_data(input_path, output_path):
     """
@@ -42,6 +42,9 @@ def preprocess_breast_cancer_data(input_path, output_path):
 
     # Save the processed data
     scaled_data.to_csv(output_path, index=False)
+    
+    #Save the scaler 
+    joblib.dump(scaler,"../app/scaler.pkl")
 
     return scaled_data
 
